@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 11 Capstone Logbook - Semester 2 (2024/2025) - Ibrahim Walid</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --background-color: #f0f4f8;
+            --text-color: #1f2937;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.15);
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        header:hover {
+            transform: translateY(-5px);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .profile-info {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .profile-info p {
+            margin: 0.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        .profile-info strong {
+            color: #ffffff;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        main {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .week-entry {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .week-entry:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        .week-entry p {
+            color: #4b5563;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .screenshot {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot:hover {
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            header {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .week-entry {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Capstone Logbook</h1>
+        <div class="profile-info">
+            <p><strong>Name:</strong> Ibrahim Walid Ibrahim Ahmed</p>
+            <p><strong>Code:</strong> 1023062</p>
+            <p><strong>Team Number:</strong> 10235</p>
+            <p><strong>Grade Level:</strong> Grade 11</p>
+            <p><strong>Semester:</strong> Semester 2 (2024/2025)</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- Week 1 Entry -->
+        <div class="week-entry">
+            <h2>Week 1</h2>
+            <p>Description of what you did during week 1...</p>
+            <img src="week1-screenshot.png" alt="Week 1 Work" class="screenshot">
+        </div>
+
+        <!-- Week 2 Entry -->
+        <div class="week-entry">
+            <h2>Week 2</h2>
+            <p>Description of what you did during week 2...</p>
+            <img src="week2-screenshot.png" alt="Week 2 Work" class="screenshot">
+        </div>
+
+        <!-- Add more week entries as needed -->
+    </main>
+</body>
+</html>
