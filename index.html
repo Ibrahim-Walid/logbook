@@ -4,14 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grade 11 Capstone Logbook - Semester 2 (2024/2025) - Ibrahim Walid</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #2563eb;
-            --secondary-color: #1e40af;
-            --background-color: #f0f4f8;
-            --text-color: #1f2937;
+            --primary-color: #0f172a;
+            --secondary-color: #1e293b;
+            --accent-color: #3b82f6;
+            --accent-hover: #2563eb;
+            --background-color: #f8fafc;
             --card-bg: #ffffff;
+            --text-color: #1e293b;
+            --text-light: #64748b;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
         }
 
         * {
@@ -21,7 +28,7 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
@@ -33,69 +40,107 @@
         header {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            padding: 2.5rem;
-            border-radius: 16px;
+            padding: 3rem;
+            border-radius: 24px;
             margin-bottom: 3rem;
-            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.15);
-            transform: translateY(0);
-            transition: transform 0.3s ease;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
         }
 
-        header:hover {
-            transform: translateY(-5px);
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.1));
+            z-index: 1;
+        }
+
+        header > * {
+            position: relative;
+            z-index: 2;
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.75rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
-            letter-spacing: -0.5px;
+            letter-spacing: -0.025em;
+            line-height: 1.2;
         }
 
         .profile-info {
             background: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
+            padding: 1.75rem;
+            border-radius: 16px;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .profile-info p {
-            margin: 0.5rem 0;
+            margin: 0.75rem 0;
             font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .profile-info strong {
             color: #ffffff;
             font-weight: 600;
-            margin-right: 0.5rem;
+            min-width: 120px;
         }
 
         main {
             display: grid;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .week-entry {
             background-color: var(--card-bg);
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
             transition: all 0.3s ease;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
         }
 
         .week-entry:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .week-entry::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--accent-color), var(--accent-hover));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .week-entry:hover::before {
+            opacity: 1;
         }
 
         h2 {
             color: var(--primary-color);
-            font-size: 1.8rem;
-            font-weight: 600;
+            font-size: 2rem;
+            font-weight: 700;
             margin-bottom: 1.5rem;
             position: relative;
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
 
         h2::after {
@@ -105,28 +150,199 @@
             left: 0;
             width: 60px;
             height: 4px;
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(to right, var(--accent-color), var(--accent-hover));
             border-radius: 2px;
         }
 
         .week-entry p {
-            color: #4b5563;
+            color: var(--text-light);
             font-size: 1.1rem;
             margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .screenshot-container {
+            display: grid;
+            gap: 2rem;
+            margin: 2rem 0;
         }
 
         .screenshot {
-            max-width: 100%;
+            width: 100%;
+            max-width: 800px;
             height: auto;
-            border-radius: 12px;
-            margin: 1rem 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            object-fit: contain;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            margin: 0 auto;
         }
 
         .screenshot:hover {
             transform: scale(1.02);
+            box-shadow: var(--shadow-lg);
         }
+
+        .references {
+            margin-top: 2rem;
+        }
+
+        .references summary {
+            background: #f8fafc;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.2s ease;
+            border: 1px solid var(--border-color);
+            position: relative;
+            z-index: 2;
+        }
+
+        .references summary::before {
+            content: '📚';
+            font-size: 1.25rem;
+        }
+
+        .references summary:hover {
+            background: #f1f5f9;
+        }
+
+        .references[open] summary {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            border-bottom: none;
+        }
+
+        .references ul {
+            list-style: none;
+            padding: 1.5rem;
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-top: none;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            display: grid;
+            gap: 0.75rem;
+            transform-origin: top;
+            animation: slideDown 0.3s ease-out forwards;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .references li {
+            font-size: 0.95rem;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            animation: fadeIn 0.3s ease-out forwards;
+            animation-delay: calc(var(--item-index) * 0.05s);
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-5px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .references li:hover {
+            background-color: #f1f5f9;
+            transform: translateX(5px);
+        }
+
+        .references a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .references a::before {
+            content: '🔗';
+            font-size: 1rem;
+            transition: transform 0.2s ease;
+        }
+
+        .references a:hover {
+            color: var(--accent-color);
+        }
+
+        .references a:hover::before {
+            transform: scale(1.2);
+        }
+
+        /* Customize the default details marker */
+        .references summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .references summary::after {
+            content: '▼';
+            margin-left: auto;
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .references[open] summary::after {
+            transform: rotate(180deg);
+        }
+
+        /* Add animation for closing */
+        .references:not([open]) ul {
+            animation: slideUp 0.3s ease-out forwards;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Add staggered animation for list items */
+        .references li:nth-child(1) { --item-index: 1; }
+        .references li:nth-child(2) { --item-index: 2; }
+        .references li:nth-child(3) { --item-index: 3; }
+        .references li:nth-child(4) { --item-index: 4; }
+        .references li:nth-child(5) { --item-index: 5; }
+        .references li:nth-child(6) { --item-index: 6; }
+        .references li:nth-child(7) { --item-index: 7; }
+        .references li:nth-child(8) { --item-index: 8; }
+        .references li:nth-child(9) { --item-index: 9; }
+        .references li:nth-child(10) { --item-index: 10; }
+        .references li:nth-child(11) { --item-index: 11; }
+        .references li:nth-child(12) { --item-index: 12; }
+        .references li:nth-child(13) { --item-index: 13; }
+        .references li:nth-child(14) { --item-index: 14; }
+        .references li:nth-child(15) { --item-index: 15; }
 
         @media (max-width: 768px) {
             body {
@@ -134,7 +350,8 @@
             }
 
             header {
-                padding: 1.5rem;
+                padding: 2rem;
+                border-radius: 16px;
             }
 
             h1 {
@@ -143,6 +360,46 @@
 
             .week-entry {
                 padding: 1.5rem;
+            }
+
+            .profile-info strong {
+                min-width: 100px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .screenshot {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            .profile-info {
+                padding: 1.25rem;
+            }
+
+            .profile-info p {
+                font-size: 1rem;
+            }
+
+            .week-entry {
+                padding: 1.25rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .screenshot {
+                border-radius: 12px;
             }
         }
     </style>
@@ -163,33 +420,93 @@
         <div class="week-entry">
             <h2>Week 1</h2>
             <p>Wrote a grand challenge "Managing and Increasing the Sources of Clean Water"</p>
-            <img src="./week 1.png" alt="Week 1 Work" class="screenshot">
+            <div class="screenshot-container">
+                <img src="./week 1.png" alt="Week 1 Work" class="screenshot">
+            </div>
+            <details class="references">
+                <summary>References</summary>
+                <ul>
+                    <li><a href="https://thewaterproject.org/water-crisis/water-in-crisis-egypt" target="_blank">The Water Project - Water in Crisis: Egypt</a></li>
+                    <li><a href="https://www.egyptindependent.com/egypts-water-needs-estimated-at-114-billion-cubic-meters-annually-minister/" target="_blank">Egypt's water needs estimated at 114 billion cubic meters annually</a></li>
+                    <li><a href="https://sschr.gov.eg/media/ysalpy5h/english742022.pdf" target="_blank">Egypt Water Resources Strategy</a></li>
+                    <li><a href="https://water.fanack.com/egypt/water-resources-in-egypt/" target="_blank">Water Resources in Egypt</a></li>
+                    <li><a href="https://www.sis.gov.eg/Story/176/Egypt-and-Water-Issue?lang=en-us" target="_blank">Egypt and Water Issue</a></li>
+                    <li><a href="https://english.ahram.org.eg/NewsContent/50/1201/423538/AlAhram-Weekly/Egypt/Rain-in-Egypt-Making-every-drop-count.aspx" target="_blank">Rain in Egypt: Making every drop count</a></li>
+                    <li><a href="https://nilebasindiscourse.org/news-blog/community-blog/egypt/river-nile-the-lifeline-of-egypt-s-water-economy.html" target="_blank">River Nile: The lifeline of Egypt's water economy</a></li>
+                    <li><a href="https://water.fanack.com/egypt/water-use-in-egypt/" target="_blank">Water Use in Egypt</a></li>
+                    <li><a href="https://www.atlanticcouncil.org/blogs/menasource/egypt-has-a-water-problem-and-no-its-not-only-the-gerd/" target="_blank">Egypt has a water problem</a></li>
+                    <li><a href="https://www.sciencedirect.com/science/article/pii/S1687428516300917" target="_blank">Water Resources in Egypt: Future Challenges and Opportunities</a></li>
+                    <li><a href="https://link.springer.com/chapter/10.1007/698_2017_42" target="_blank">Water Resources in Egypt</a></li>
+                    <li><a href="https://www.unicef.org/egypt/water-sanitation-and-hygiene" target="_blank">UNICEF Egypt - Water, Sanitation and Hygiene</a></li>
+                    <li><a href="https://data.unicef.org/topic/child-health/diarrhoeal-disease/" target="_blank">UNICEF - Diarrhoeal Disease</a></li>
+                    <li><a href="https://www.saharaexpo.com/content/dam/Informa/sahara-expo/aet24sah-aa-sahara2024/AET24SAH-AA-AfricaReport-EN.pdf" target="_blank">Sahara Expo Report</a></li>
+                    <li><a href="https://www.sis.gov.eg/Story/160176/Minister-Egypt%27s-water-sector-faces-great-challenges" target="_blank">Minister: Egypt's water sector faces great challenges</a></li>
+                </ul>
+            </details>
         </div>
 
         <div class="week-entry">
             <h2>Week 2</h2>
             <p>Searched and wrote a prior solution "El-Gabal El-Asfar Wastewater Treatment Plant"</p>
-            <img src="./week 2.png" alt="Week 2 Work" class="screenshot">
+            <div class="screenshot-container">
+                <img src="./week 2.png" alt="Week 2 Work" class="screenshot">
+            </div>
+            <details class="references">
+                <summary>References</summary>
+                <ul>
+                    <li><a href="https://www.afdb.org/en/documents/egypt-gabal-el-asfar-wastewater-treatment-plant-stage-ii-phase-ii-project-project-completion-report" target="_blank">AfDB - Gabal El-Asfar Wastewater Treatment Plant Project</a></li>
+                    <li><a href="https://www.jenbacher.com/en/case-studies/el-gabar-al-asfar-watewater-treatment-plant-egy" target="_blank">Jenbacher - El Gabar Al-Asfar Case Study</a></li>
+                    <li><a href="https://www.jica.go.jp/english/our_work/social_environmental/id/middle_east/egypt/c8h0vm0000c65ret.html" target="_blank">JICA - Egypt Project</a></li>
+                    <li><a href="https://www.aawholding.com/project-details/81" target="_blank">AAW Holding - Project Details</a></li>
+                    <li><a href="https://www.dailynewsegypt.com/2025/02/01/housing-minister-orders-acceleration-of-al-gabal-al-asfar-plant-expansion/" target="_blank">Daily News Egypt - Plant Expansion</a></li>
+                    <li><a href="https://smartwatermagazine.com/news/african-development-bank-group/gabal-asfar-wastewater-treatment-plant-inaugurated-cairo" target="_blank">Smart Water Magazine - Plant Inauguration</a></li>
+                    <li><a href="https://www.afdb.org/fileadmin/uploads/afdb/Documents/Environmental-and-Social-Assessments/ADB-BD-IF-2008-55-EN-EGYPT-ESIA-GABAL-EL-ASFAR-WASTEWATER-TREATMENT-PLANT.PDF" target="_blank">AfDB - Environmental Assessment</a></li>
+                    <li><a href="https://www.jenbacher.com/images/medias/files/6485/ijb_cs_en_a4_nu_al_asfar_rz_screen_ijb-424070-en.pdf" target="_blank">Jenbacher - Technical Documentation</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Water_supply_and_sanitation_in_Egypt" target="_blank">Wikipedia - Water Supply in Egypt</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/List_of_largest_wastewater_treatment_plants" target="_blank">Wikipedia - Largest Wastewater Treatment Plants</a></li>
+                </ul>
+            </details>
         </div>
 
         <div class="week-entry">
             <h2>Week 3</h2>
             <p>Searched and wrote a prior solution "New Cairo Wastewater Treatment Plant"</p>
             <p>Went to the field trip to "مركز بحوث المطرية"</p>
-            <img src="./week 3.png" alt="Week 3 Work" class="screenshot">
+            <div class="screenshot-container">
+                <img src="./week 3.png" alt="Week 3 Work" class="screenshot">
+            </div>
+            <details class="references">
+                <summary>References</summary>
+                <ul>
+                    <li><a href="https://orascom.com/projects/new-cairo-wastewater-treatment-plant/" target="_blank">Orascom - New Cairo Wastewater Treatment Plant</a></li>
+                    <li><a href="https://ppp.worldbank.org/public-private-partnership/sites/default/files/2022-06/P3Briefs_EgyptNewCairoWastewater.pdf" target="_blank">World Bank - PPP Brief</a></li>
+                    <li><a href="https://documents1.worldbank.org/curated/en/838671521214824102/pdf/124336-REVISED-PUBLIC-P161389-Waste-water.pdf" target="_blank">World Bank - Project Document</a></li>
+                    <li><a href="https://icat.com.eg/portfolio/new-cairo-waste-water-treatment-plant/" target="_blank">ICAT - Project Portfolio</a></li>
+                    <li><a href="https://www.globenewswire.com/news-release/2009/06/09/1294290/0/en/OCI-Aqualia-JV-Awarded-Wastewater-Treatment-Plant.html" target="_blank">Global Newswire - Plant Award</a></li>
+                    <li><a href="https://orascom.com/services/concessions-investments/" target="_blank">Orascom - Concessions & Investments</a></li>
+                    <li><a href="https://www.linkedin.com/company/orasqualia-for-operation-and-maintenance" target="_blank">LinkedIn - Orasqualia</a></li>
+                    <li><a href="https://knowledge-hub.circle-economy.com/article/10636" target="_blank">Circle Economy - Knowledge Hub</a></li>
+                    <li><a href="https://ppp.worldbank.org/public-private-partnership/library/egypt-new-cairo-wastewater" target="_blank">World Bank - PPP Library</a></li>
+                    <li><a href="https://www.cidob.org/sites/default/files/2024-10/173-186_MIQUEL%20RODR%C3%8DGUEZ%20PLANAS.pdf" target="_blank">CIDOB - Research Paper</a></li>
+                </ul>
+            </details>
         </div>
 
         <div class="week-entry">
             <h2>Week 4</h2>
             <p>Determined the prototype stages and design and wrote the "Selection of Prototype" section</p>
-            <img src="./week 4.png" alt="Week 4 Work" class="screenshot">
+            <div class="screenshot-container">
+                <img src="./week 4.png" alt="Week 4 Work" class="screenshot">
+            </div>
         </div>
 
         <div class="week-entry">
             <h2>Week 5</h2>
             <p>Went to the Leather City in 10th of Ramadan City to bring the wastewater sample.</p>
-            <img src="./week 5.png" alt="Week 5 Work" class="screenshot">
-            <img src="./week 5 2.png" alt="Week 5 Work" class="screenshot">
+            <div class="screenshot-container">
+                <img src="./week 5.png" alt="Week 5 Work" class="screenshot">
+                <img src="./week 5 2.png" alt="Week 5 Work" class="screenshot">
+            </div>
         </div>
 
         <div class="week-entry">
@@ -199,7 +516,18 @@
         <div class="week-entry">
             <h2>Week 7</h2>
             <p>Wrote the recommendation section in the poster</p>
-            <img src="./week 7.png" alt="Week 7 Work" class="screenshot">
+            <div class="screenshot-container">
+                <img src="./week 7.png" alt="Week 7 Work" class="screenshot">
+            </div>
+            <details class="references">
+                <summary>References</summary>
+                <ul>
+                    <li><a href="https://link.springer.com/article/10.1007/s11356-020-09275-1" target="_blank">Springer - Magnetic Biochar Adsorbents</a></li>
+                    <li><a href="https://www.lzzgmachine.com/news/longzhong-news/the-economic-and-environmental-benefits-about-sand-washing-machine.html" target="_blank">LZZG - Sand Washing Machine Benefits</a></li>
+                    <li><a href="https://www.sciencedirect.com/science/article/abs/pii/S095965261930624X" target="_blank">ScienceDirect - Environmental Impact Study</a></li>
+                    <li><a href="https://www.metso.com/industries/water/slurry-pumps/" target="_blank">Metso - Slurry Pumps</a></li>
+                </ul>
+            </details>
         </div>
         <div class="week-entry">
             <h2>Week 8</h2>
@@ -211,17 +539,21 @@
             <p>I constructed the prototype with my mates and connected its components together</p>
             <p>We made sure every stage works well alone</p>
             <p>wrote chapter 3 in the portfolio</p>
-            <img src="./week 9.png" alt="Week 9 Work" class="screenshot">
-            <img src="./week 9 2.png" alt="Week 9 Work" class="screenshot">
+            <div class="screenshot-container">
+                <img src="./week 9.png" alt="Week 9 Work" class="screenshot">
+                <img src="./week 9 2.png" alt="Week 9 Work" class="screenshot">
+            </div>
         </div>
         <div class="week-entry">
             <h2>Week 10</h2>
             <p>Made the text plan and got results</p>
             <p>analyzed the results with my mates</p>
             <p>finalized the poster and the portfolio</p>
-            <img src="./week 10 1.png" alt="Week 10 Work" class="screenshot">
-            <img src="./week 10 2.png" alt="Week 10 Work" class="screenshot">
-            <img src="./week 10 3.png" alt="Week 10 Work" class="screenshot">
+            <div class="screenshot-container">
+                <img src="./week 10 1.png" alt="Week 10 Work" class="screenshot">
+                <img src="./week 10 2.png" alt="Week 10 Work" class="screenshot">
+                <img src="./week 10 3.png" alt="Week 10 Work" class="screenshot">
+            </div>
         </div>
     </main>
 </body>
